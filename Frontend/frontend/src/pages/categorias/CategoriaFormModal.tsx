@@ -13,15 +13,28 @@ export default function CategoriaFormModal({ isOpen, onClose, onSubmit, initialD
   const [form, setForm] = useState<Partial<Categoria>>({ nombre: '', descripcion: '', orden_display: 0, parent_id: null })
 
   useEffect(() => {
-    if (initialData) setForm(initialData)
-    else setForm({ nombre: '', descripcion: '', orden_display: 0, parent_id: null })
-  }, [initialData, isOpen])
+  if (isOpen) {
+    if (initialData) {
+      console.log('📝 Editando categoría:', initialData)
+      setForm({ ...initialData })
+    } else {
+      console.log('🆕 Nueva categoría')
+      setForm({ nombre: '', descripcion: '', orden_display: 0, parent_id: null })
+    }
+  }
+}, [initialData, isOpen])
 
   if (!isOpen) return null
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    onSubmit(form)
+    const payload = {
+      ...form,
+      parent_id: (form.parent_id === null || form.parent_id === undefined || form.parent_id === 0 || form.parent_id === 0)
+        ? null
+        : form.parent_id
+    }
+    onSubmit(payload)
   }
 
   return (
@@ -46,10 +59,25 @@ export default function CategoriaFormModal({ isOpen, onClose, onSubmit, initialD
                 value={form.orden_display ?? 0} onChange={e => setForm({ ...form, orden_display: Number(e.target.value) })} />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Parent ID</label>
-              <input type="number" className="w-full border rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
-                value={form.parent_id ?? ''} onChange={e => setForm({ ...form, parent_id: e.target.value ? Number(e.target.value) : null })} />
-            </div>
+              <label className="block text-sm font-medium mb-1">Parent ID (opcional)</label>
+              <input 
+                type="number" 
+                className="w-full border rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                placeholder="Dejar vacío para categoría raíz"
+                value={form.parent_id ?? ''} 
+                onChange={e => {
+                  const val = e.target.value
+                  setForm({ 
+                    ...form, 
+                    // ✅ Convertir string vacío a null automáticamente
+                    parent_id: val === '' ? null : Number(val)
+                  })
+                }}
+              />
+              <p className="text-xs text-gray-500 mt-1">
+                Dejar vacío si es una categoría principal
+              </p>
+</div>
           </div>
           <div className="flex justify-end gap-3 pt-4">
             <button type="button" onClick={onClose} className="px-4 py-2 border rounded hover:bg-gray-100">Cancelar</button>

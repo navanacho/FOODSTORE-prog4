@@ -3,11 +3,22 @@ from app.database import init_db
 from categoria.router import router as categoria_router
 from producto.router import router as producto_router
 from ingrediente.router import router as ingrediente_router
+from fastapi.middleware.cors import CORSMiddleware 
+
+
 
 app = FastAPI(
     title="FoodStore API",
     description="Backend del Sistema de Pedidos v3.0 | FastAPI + SQLModel + PostgreSQL",
     version="1.0.0"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # Solo tu frontend en dev
+    allow_credentials=True,
+    allow_methods=["*"],  # GET, POST, PUT, DELETE
+    allow_headers=["*"],
 )
 
 @app.on_event("startup")
