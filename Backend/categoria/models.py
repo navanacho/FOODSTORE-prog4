@@ -17,7 +17,7 @@ class CategoriaBase(SQLModel):
 class Categoria(CategoriaBase, table=True):
     __tablename__ = "categorias"
     id: Optional[int] = Field(default=None, primary_key=True)
-    parent_id: Optional[int] = Field(default=None, foreign_key="categorias.id", ondelete="SET NULL") # P05 Self-Ref
+    parent_id: Optional[int] = Field(default=None, foreign_key="categorias.id", ondelete="SET NULL") 
 
     # Self-referencing - hijos (one-to-many) y padre (many-to-one)
     hijos: List["Categoria"] = Relationship(
@@ -44,6 +44,5 @@ class ProductoCategoria(SQLModel, table=True):
     categoria_id: int = Field(foreign_key="categorias.id", primary_key=True, ondelete="RESTRICT")
     es_principal: bool = Field(default=True)
     fecha_creacion: datetime = Field(default_factory=datetime.now)
-    
     producto: Optional["Producto"] = Relationship(back_populates="categorias_relacionadas")
     categoria: Optional["Categoria"] = Relationship(back_populates="productos_relacionados")

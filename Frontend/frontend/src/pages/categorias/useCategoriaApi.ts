@@ -30,7 +30,6 @@ export const useCreateCategoria = () => {
 export const useUpdateCategoria = () => {
   const qc = useQueryClient()
   return useMutation({
-    // ✅ CORREGIDO: Acepta id + campos parciales (no requiere todos los campos)
     mutationFn: async (data: UpdateCategoriaInput) => {
       const { id, ...payload } = data
       const res = await api.put<Categoria>(`/categorias/${id}`, payload)

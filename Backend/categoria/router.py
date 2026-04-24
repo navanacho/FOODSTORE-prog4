@@ -8,7 +8,7 @@ from . import services
 
 router = APIRouter(prefix="/categorias", tags=["Categorías"])
 
-#GET all categories
+
 @router.get("/", response_model=List[CategoriaRead])
 def list(
     skip: Annotated[int, Query(ge=0)] = 0,

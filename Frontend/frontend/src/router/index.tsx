@@ -5,6 +5,7 @@ import { lazy, Suspense } from 'react'
 const App = lazy(() => import('../App'))
 
 // Páginas de módulos (lazy loading para code splitting)
+const LandingPage = lazy(() => import('../pages/LandingPage'))
 const CategoriasPage = lazy(() => import('../pages/categorias/CategoriasPage'))
 const ProductosPage = lazy(() => import('../pages/productos/ProductosPage'))
 const IngredientesPage = lazy(() => import('../pages/ingredientes/IngredientesPage'))
@@ -13,8 +14,8 @@ const IngredientesPage = lazy(() => import('../pages/ingredientes/IngredientesPa
 // Fallback de carga
 const LoadingFallback = () => (
   <div className="flex items-center justify-center min-h-[400px]">
-    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-    <span className="ml-3 text-gray-600">Cargando...</span>
+    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+    <span className="ml-3 text-white/60">Cargando...</span>
   </div>
 )
 
@@ -27,7 +28,7 @@ export const router = createBrowserRouter([
       </Suspense>
     ),
     children: [
-      { index: true, element: <CategoriasPage /> }, // Home por defecto
+      { index: true, element: <LandingPage /> }, // Home por defecto
       { path: 'categorias', element: <CategoriasPage /> },
       { path: 'productos', element: <ProductosPage /> },
       { path: 'ingredientes', element: <IngredientesPage /> },

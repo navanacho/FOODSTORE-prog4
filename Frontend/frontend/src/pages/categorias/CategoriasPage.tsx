@@ -31,37 +31,37 @@ export default function CategoriasPage() {
 
   return (
     <div>
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
-        <h1 className="text-2xl font-bold">📦 Gestión de Categorías</h1>
-        <button onClick={handleCreate} className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+        <h1 className="text-4xl md:text-5xl font-heading italic tracking-tight">Gestión de Categorías</h1>
+        <button onClick={handleCreate} className="liquid-glass-strong rounded-full px-5 py-2.5 text-sm font-medium flex items-center gap-2 hover:bg-white/5 transition-colors">
           + Nueva Categoría
         </button>
       </div>
 
-      <div className="bg-white rounded-lg shadow overflow-x-auto">
+      <div className="liquid-glass rounded-xl overflow-hidden mt-6">
         <table className="w-full text-left border-collapse">
-          <thead className="bg-gray-50 border-b">
+          <thead className="border-b border-white/10 bg-white/5">
             <tr>
-              <th className="p-4 font-semibold text-gray-700">ID</th>
-              <th className="p-4 font-semibold text-gray-700">Nombre</th>
-              <th className="p-4 font-semibold text-gray-700">Descripción</th>
-              <th className="p-4 font-semibold text-gray-700">Orden</th>
-              <th className="p-4 font-semibold text-gray-700 text-right">Acciones</th>
+              <th className="p-4 font-semibold text-white/80">ID</th>
+              <th className="p-4 font-semibold text-white/80">Nombre</th>
+              <th className="p-4 font-semibold text-white/80">Descripción</th>
+              <th className="p-4 font-semibold text-white/80">Orden</th>
+              <th className="p-4 font-semibold text-white/80 text-right">Acciones</th>
             </tr>
           </thead>
           <tbody>
             {data.length === 0 ? (
-              <tr><td colSpan={5} className="p-6 text-center text-gray-500">No hay categorías registradas</td></tr>
+              <tr><td colSpan={5} className="p-6 text-center text-white/50">No hay categorías registradas</td></tr>
             ) : (
-              data.map(cat => (
-                <tr key={cat.id} className="border-b hover:bg-gray-50 transition">
-                  <td className="p-4 text-gray-600">{cat.id}</td>
-                  <td className="p-4 font-medium">{cat.nombre}</td>
-                  <td className="p-4 text-gray-600 truncate max-w-[200px]">{cat.descripcion || '-'}</td>
-                  <td className="p-4">{cat.orden_display}</td>
+              data.map((cat: Categoria) => (
+                <tr key={cat.id} className="border-b border-white/5 hover:bg-white/5 transition">
+                  <td className="p-4 text-white/60">{cat.id}</td>
+                  <td className="p-4 font-medium text-white">{cat.nombre}</td>
+                  <td className="p-4 text-white/60 truncate max-w-[200px]">{cat.descripcion || '-'}</td>
+                  <td className="p-4 text-white/80">{cat.orden_display}</td>
                   <td className="p-4 text-right space-x-3">
-                    <button onClick={() => handleEdit(cat)} className="text-blue-600 hover:text-blue-800 font-medium">Editar</button>
-                    <button onClick={() => handleDelete(cat.id)} className="text-red-600 hover:text-red-800 font-medium">Eliminar</button>
+                    <button onClick={() => handleEdit(cat)} className="text-white hover:text-white/70 font-medium transition">Editar</button>
+                    <button onClick={() => handleDelete(cat.id)} className="text-red-400 hover:text-red-300 font-medium transition">Eliminar</button>
                   </td>
                 </tr>
               ))

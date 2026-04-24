@@ -11,7 +11,8 @@ class ProductoBase(BaseModel):
     disponible: bool = True
 
 class ProductoCreate(ProductoBase):
-    pass
+    categoria_id: List[int] = Field(default_factory=list)
+    ingredientes_id: List[int] = Field(default_factory=list)
 
 class ProductoRead(ProductoBase):
     id: int
@@ -31,6 +32,8 @@ class ProductoUpdate(ProductoBase):
     imagenes_url: Optional[List[str]] = None
     tiempo_prep_min: Optional[int] = None
     disponible: Optional[bool] = None
+    categoria_id: Optional[List[int]] = None
+    ingredientes_id: Optional[List[int]] = None
 
 class ProductoDelete(BaseModel):
     id: int
