@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { api } from '../../api/client'
-import type { Ingrediente } from '../../types'
+import { api } from '../api/client'
+import type { Ingrediente } from '../types'
 
 type UpdateIngredienteInput = { id: number } & Partial<Omit<Ingrediente, 'id'>>
 

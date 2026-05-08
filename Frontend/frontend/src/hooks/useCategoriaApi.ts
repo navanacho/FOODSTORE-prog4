@@ -1,7 +1,7 @@
 // src/pages/categorias/useCategoriaApi.ts
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { api } from '../../api/client'
-import type { Categoria } from '../../types'
+import { api } from '../api/client'
+import type { Categoria } from '../types'
 
 // Tipo auxiliar: ID requerido + resto opcional para actualizaciones
 type UpdateCategoriaInput = { id: number } & Partial<Omit<Categoria, 'id' | 'created_at'>>

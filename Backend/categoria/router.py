@@ -9,7 +9,7 @@ from . import services
 router = APIRouter(prefix="/categorias", tags=["Categorías"])
 
 
-@router.get("/", response_model=List[CategoriaRead])
+@router.get("", response_model=List[CategoriaRead])
 def list(
     skip: Annotated[int, Query(ge=0)] = 0,
     limit: Annotated[int, Query(ge=1, le=50)] = 20,
@@ -19,7 +19,7 @@ def list(
     with uow as session:
         return services.get_all(session, skip, limit, nombre)
 
-@router.post("/", response_model=CategoriaRead, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=CategoriaRead, status_code=status.HTTP_201_CREATED)
 def create(
     data: CategoriaCreate,
     uow: UnitOfWork = Depends(get_uow)

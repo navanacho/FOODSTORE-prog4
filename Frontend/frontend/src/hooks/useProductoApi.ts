@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { api } from '../../api/client'
-import type { Producto } from '../../types'
+import { api } from '../api/client'
+import type { Producto } from '../types'
 
 type UpdateProductoInput = { id: number } & Partial<Omit<Producto, 'id' | 'created_at'>>
 

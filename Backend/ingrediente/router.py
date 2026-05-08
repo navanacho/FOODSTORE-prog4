@@ -7,7 +7,7 @@ from . import services
 
 router = APIRouter(prefix="/ingredientes", tags=["Ingredientes"])
 
-@router.get("/", response_model=List[IngredienteRead])
+@router.get("", response_model=List[IngredienteRead])
 def list(
     skip: Annotated[int, Query(ge=0)] = 0,
     limit: Annotated[int, Query(ge=1, le=50)] = 20,
@@ -18,7 +18,7 @@ def list(
     with uow as session:
         return services.get_all(session, skip, limit, nombre, es_alergeno)
 
-@router.post("/", response_model=IngredienteRead, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=IngredienteRead, status_code=status.HTTP_201_CREATED)
 def create(data: IngredienteCreate, uow: UnitOfWork = Depends(get_uow)):
     with uow as session:
         return services.create(session, data)
