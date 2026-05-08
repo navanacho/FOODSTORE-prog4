@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useIngredientes, useCreateIngrediente, useUpdateIngrediente, useDeleteIngrediente } from './useIngredienteApi'
+import { useIngredientes, useCreateIngrediente, useUpdateIngrediente, useDeleteIngrediente } from '../../hooks/useIngredienteApi'
 import IngredienteFormModal from './IngredienteFormModal'
 import type { Ingrediente } from '../../types'
 

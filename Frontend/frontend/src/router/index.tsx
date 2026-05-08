@@ -32,7 +32,6 @@ export const router = createBrowserRouter([
       { path: 'categorias', element: <CategoriasPage /> },
       { path: 'productos', element: <ProductosPage /> },
       { path: 'ingredientes', element: <IngredientesPage /> },
-      // Ruta dinámica para detalle (requerida en rúbrica)
       //{ path: 'detalle/:entity/:id', element: <DetallePage /> },
       // 404
       { path: '*', element: <div className="p-8 text-center text-gray-500">404 - Página no encontrada</div> },

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useCategorias, useCreateCategoria, useUpdateCategoria, useDeleteCategoria } from './useCategoriaApi'
+import { useCategorias, useCreateCategoria, useUpdateCategoria, useDeleteCategoria } from '../../hooks/useCategoriaApi'
 import CategoriaFormModal from './CategoriaFormModal'
 import type { Categoria } from '../../types'
 

@@ -9,3 +9,7 @@ def init_db():
 def get_session():
     with Session(engine) as session:
         yield session
+
+def get_uow():
+    from uow.uow import UnitOfWork
+    return UnitOfWork()

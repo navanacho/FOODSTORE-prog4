@@ -10,7 +10,7 @@ export const api: AxiosInstance = axios.create({
   timeout: 10000,
 })
 
-// Interceptor para logging (útil para debug en el video)
+
 api.interceptors.request.use((config) => {
   console.log(`📤 [${config.method?.toUpperCase()}] ${config.url}`)
   return config

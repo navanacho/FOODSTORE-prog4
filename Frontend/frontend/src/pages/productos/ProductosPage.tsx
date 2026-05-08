@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useProductos, useCreateProducto, useUpdateProducto, useDeleteProducto } from './useProductoApi'
+import { useProductos, useCreateProducto, useUpdateProducto, useDeleteProducto } from '../../hooks/useProductoApi'
 import ProductoFormModal from './ProductoFormModal'
 import type { Producto } from '../../types'
 
